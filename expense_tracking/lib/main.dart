@@ -1,9 +1,30 @@
 // ignore_for_file: avoid_print, prefer_const_constructors
 
+import 'package:expense_tracking/models/trancs.dart';
 import 'package:expense_tracking/screens/loginscreen.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+import 'package:firebase_core/firebase_core.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'firebase_options.dart';
+
+void main() async {
+
+WidgetsFlutterBinding.ensureInitialized();
+
+  // Initialize Hive
+  await Hive.initFlutter();
+
+  // Register the TransactionAdapter
+  Hive.registerAdapter(TransactionAdapter());
+
+  // Open the Hive box
+  await Hive.openBox('transactions');
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+);
   runApp(const ExpenseTracker());
 }
 
@@ -92,7 +113,7 @@ class HomeScreen extends StatelessWidget {
                onPressed: () {
                 Navigator.push(
                context,
-                MaterialPageRoute(builder: (context) => const LoginScreen()),
+                MaterialPageRoute(builder: (context) => LoginPage()),
                  );
                },
           
