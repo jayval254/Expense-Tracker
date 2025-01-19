@@ -51,7 +51,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Expense Tracker'),
+        title: const Text('Expense Tracker App'),
         centerTitle: true,
       ),
       body: Center(
@@ -68,7 +68,7 @@ class HomeScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: const Text(
-                  'Welcome to My App!',
+                  'Welcome!',
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
